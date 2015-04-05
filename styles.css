@@ -1,0 +1,14 @@
+body{
+  margin: 0;
+  font-family: helvetica;
+  position: relative;
+}
+
+.board {
+  background-color: #cccccc;
+}
+
+.ball {
+  background-color: #f00;
+  position: absolute;
+}
