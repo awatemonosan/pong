@@ -24,14 +24,14 @@ var Ball = function () {
   this.size = 25;
   this.x = settings.width / 2;
   this.y = settings.height / 2;
-  this.velocityX = 1;
-  this.velocityY = 30;
+  this.velocityX = 10;
+  this.velocityY = 10;
 };
 
 Ball.prototype.move = function ( ){
   //update physics / do magic
   this.x = this.x + this.velocityX;
-  this.y = this.y + this.veloctiyY;
+  this.y = this.y + this.velocityY;
 
   //handle ceiling and floor collisions
   if ( this.y >= settings.height ) {
@@ -45,6 +45,14 @@ Ball.prototype.move = function ( ){
   //handle paddle collisions
 
   //handle goal conditions
+  if ( this.x >= settings.width ) {
+    this.velocityX = -this.velocityX;
+  }
+
+  if ( this.x <= 0) {
+    this.velocityX = -this.velocityX;
+  }
+
 
 };
 
@@ -66,8 +74,8 @@ var update = function() {
   var ballElements = board.selectAll('.ball').data(balls, function(ball) {return ball.id;});
   //update
   ballElements.style({
-    left: function(ball) { return ball.x + settings.width/2 +'px'; },
-    top: function(ball) { return ball.y + settings.height/2 +'px'; }
+    top: function(ball) { return ball.y +'px'; },
+    left: function(ball) { return ball.x +'px'; }
   });
 
   //enter
